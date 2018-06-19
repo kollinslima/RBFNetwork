@@ -32,7 +32,7 @@ MaxHits = 0;
 MaxNeurons = 0;
 MaxSpread = 0;
 
-%Train 2
+%Train 
 spread = 11.18;
 maxNeurons = 6;
 
@@ -60,4 +60,3 @@ for i = 1:size(class_test,1)
 end
 
 confusion_matrix
-%sprintf('Hits: %f.',(hitsTest/size(class_test,1))*100)

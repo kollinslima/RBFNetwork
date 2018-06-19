@@ -37,12 +37,13 @@ error_goal = 0.0;
 DF = 1;
 
 %Change number of neurons
-%for maxNeurons = 80:1:size(train_database(:,[1:end-1])',2)
+for maxNeurons = 1:1:size(train_database(:,[1:end-1])',2)
 
     features_train = train_database(:,[1:end-1])';
     class_train = train_database(:,end)';
 
-    rbf_network = newrb(features_train,class_train, error_goal, spread,maxNeurons,DF)
+    rbf_network = newrb(features_train,class_train, error_goal, spread,maxNeurons,DF);
+    close all;
     
     %% Validate RBF  
     features_validation = validation_database(:,[1:end-1])';
@@ -65,11 +66,11 @@ DF = 1;
         MaxHits = hitsValidation;
         MaxNeurons = maxNeurons;      
     end
-%end
+end
 
-% plot(historyHits, 'r', 'LineWidth',2);
-% title('Acertos X Neurônios');
-% xlabel('Quantidade de neurônios');
-% ylabel('Taxa de acerto (%)');
+plot(historyHits, 'r', 'LineWidth',2);
+title('Acertos X Neurônios');
+xlabel('Quantidade de neurônios');
+ylabel('Taxa de acerto (%)');
 
 sprintf('Neurons %f\nHits: %f.',MaxNeurons, (MaxHits/size(class_validation,1))*100)
